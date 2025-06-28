@@ -31,7 +31,12 @@ After starting the container for the first time, you must run several commands t
 3. To make your account an administrator (after creating it):&#xD;
    `php artisan user:admin your-username`&#xD;
 &#xD;
-4. Restart the container after setup.</Overview>
+4. Restart the container after setup.&#xD;
+&#xD;
+5. After install, then visit your.url/i/actor once to activate federation.&#xD;
+&#xD;
+Admins can generate invite links (even if they have closed registrations). &#xD;
+php artisan admin:invite</Overview>
   <Category/>
   <WebUI>http://[IP]:[PORT:8080]</WebUI>
   <TemplateURL/>
@@ -67,9 +72,15 @@ After starting the container for the first time, you must run several commands t
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
   <Config Name="OPEN_REGISTRATION" Target="OPEN_REGISTRATION" Default="false" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
   <Config Name="ADMIN_DOMAIN" Target="ADMIN_DOMAIN" Default="localhost" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">192.168.1.100</Config>
-  <Config Name="SESSION_DOMAIN" Target="SESSION_DOMAIN" Default="localhost" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">pix.tlg.link</Config>
+  <Config Name="SESSION_DOMAIN" Target="SESSION_DOMAIN" Default="localhost" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">localhost</Config>
   <Config Name="DB_CONNECTION" Target="DB_CONNECTION" Default="mysql" Mode="" Description="mysql or pgsql" Type="Variable" Display="always" Required="false" Mask="false">mysql</Config>
-  <Config Name="ACTIVITY_PUB" Target="ACTIVITY_PUB" Default="false" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
-  <Config Name="Redis Client" Target="REDIS_CLIENT" Default="phpredis" Mode="" Description="Use the high-performance 'phpredis' extension we installed." Type="Variable" Display="advanced" Required="true" Mask="false">phpredis</Config>
+  <Config Name="ACTIVITY_PUB" Target="ACTIVITY_PUB" Default="false" Mode="" Description="This core setting enables the ActivityPub protocol on your Pixelfed instance, allowing it to communicate with other servers using ActivityPub. &#13;&#10;" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="AP_REMOTE_FOLLOW" Target="AP_REMOTE_FOLLOW" Default="false" Mode="" Description="This setting specifically allows users on your Pixelfed instance to follow users on other ActivityPub-enabled servers, and vice versa. &#13;&#10;" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="AP_INBOX" Target="AP_INBOX" Default="false" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="AP_OUTBOX" Target="AP_OUTBOX" Default="false" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="AP_SHAREDINBOX" Target="AP_SHAREDINBOX" Default="false" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Redis Client" Target="REDIS_CLIENT" Default="phpredis" Mode="" Description="" Type="Variable" Display="advanced" Required="true" Mask="false">phpredis</Config>
+  <Config Name="Image Driver" Target="IMAGE_DRIVER" Default="imagick" Mode="" Description="Use 'imagick' for best quality and features. 'gd' is the fallback." Type="Variable" Display="advanced" Required="true" Mask="false">imagick</Config>
+  <Config Name="Session Driver" Target="SESSION_DRIVER" Default="redis" Mode="" Description="Use 'redis' for better performance than 'database" Type="Variable" Display="advanced" Required="true" Mask="false">redis</Config>
   <TailscaleStateDir/>
 </Container>
