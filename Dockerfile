@@ -31,8 +31,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /app
 
 # Clone the source and build the application
-# We are explicitly targeting tag v0.12.7 as seen in your screenshot
-RUN git clone -b v0.12.7 https://github.com/pixelfed/pixelfed.git .
+ARG PIXELFED_VERSION=v0.14.4
+RUN git clone -b ${PIXELFED_VERSION} https://github.com/pixelfed/pixelfed.git .
 RUN composer install --no-ansi --no-dev --no-interaction --optimize-autoloader
 RUN npm install && npm run production
 
